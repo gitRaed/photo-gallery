@@ -1,6 +1,9 @@
-import * as firebase from 'firebase/app';
-import 'firebase/storage'; //to store our images
-import 'firebase/firestore';//used as our db
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/storage'; //to store our images
+import 'firebase/compat/firestore';//used as our db
+
+//See here why firebase should be imported like that : 
+// https://stackoverflow.com/questions/68946446/how-do-i-fix-a-firebase-9-0-import-error-attempted-import-error-firebase-app
 
 
 // Your web app's Firebase configuration
@@ -18,5 +21,6 @@ firebase.initializeApp(firebaseConfig);
 
 const projectStorage = firebase.storage();
 const projectFirestore = firebase.firestore();
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
-export {projectStorage, projectFirestore};
+export {projectStorage, projectFirestore, timestamp};

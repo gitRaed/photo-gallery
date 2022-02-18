@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ProgressBar from './ProgressBar';
 
 const UploadForm = () => {
 
@@ -20,12 +21,17 @@ const UploadForm = () => {
         };
     };
 
+    /*Let me explain how the {} in the return works
+    the parameter before the && is the condition. If it's true, then what's after the && will happen
+    */
+
     return (
         <form>
             <input type="file" onChange={changeHandler}/>
             <div className='output'>
-                {error && <div className='error'>{error}</div>}
-                {file && <div>{file.name}</div>}
+                { error && <div className='error'>{error}</div> }
+                { file && <div>{file.name}</div> }
+                { file && <ProgressBar file={file} setFile={setFile} /> }
             </div>
         </form>
     )

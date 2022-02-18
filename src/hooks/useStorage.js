@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { projectStorage } from '../firebase/config';
+import { projectStorage, projectFirestore, timestamp } from '../firebase/config';
 
 
 const useStorage = (file) => {
@@ -12,6 +12,7 @@ const useStorage = (file) => {
     useEffect(() => {
         //references
         const storageRef = projectStorage.ref(file.name);
+        const collectionRef = projectFirestore.collection('images');
 
         //an asynchronous method that will uploading the file to this reference
         //.on is a listener that will triger the function when the event 'state_changed' happens, it'll take a snapshot(an object)
@@ -25,7 +26,9 @@ const useStorage = (file) => {
             setError(error);
         }, async () => {
             //this part will trigger when the upload is fully complete
-            const url = storageRef.getDownloadUrl();//this will get the url of the file what was just uploaded
+            const url = await storageRef.getDownloadURL();//this will get the url of the file what was just uploaded
+            const createdAt = timestamp();
+            collectionRef.add({ url, createdAt });//this will store the url in the collection 'images'
             setUrl(url);
         });
     }, [file]);
