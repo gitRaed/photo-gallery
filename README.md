@@ -1,4 +1,4 @@
-You can check the website here : replit.com/@gitRaed/photo-gallery
+You can check the website here : https://photo-gallery.gitraed.repl.co
 
 Note that it'll take time for the replit server to run and things may crash. Please be understanding, kinda new to replit.
 
