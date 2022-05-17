@@ -1,5 +1,7 @@
 You can check the website here : https://photo-gallery.gitraed.repl.co
 
+The firebase database is off :/
+
 Note that it'll take time for the replit server to run and things may crash. Please be understanding, kinda new to replit.
 
 This app was made with React and Firebase ! 
